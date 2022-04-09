@@ -123,7 +123,7 @@ public class Driver {
 					String distance = scan.next();
 					tempClient.setDistance(distance);
 				}catch(Exception e) {
-					System.out.println("mian " + e.getLocalizedMessage());
+					System.out.println(e.getLocalizedMessage());
 					scan.nextLine();
 					loop = true;
 				}
