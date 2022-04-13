@@ -91,7 +91,7 @@ public class DeliveryItemList {
 
 				int number = Integer.parseInt(choice);
 
-				if (number <= 0 || number > itemList.size() + 1) {
+				if (number <= 0 || number > itemList.size()) {
 
 					System.out.println("out of range");
 
