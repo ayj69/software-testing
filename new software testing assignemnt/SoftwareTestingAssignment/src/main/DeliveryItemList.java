@@ -196,7 +196,7 @@ public class DeliveryItemList {
 	}
 
 	// get valid date
-	public void getDate(LocalDate date) {
+	public void getDate() {
 
 		//LocalDate date = null;
 		int year = LocalDate.now().getYear();
@@ -279,9 +279,7 @@ public class DeliveryItemList {
 		System.out.println(this.getDevStaff().getUsername() + "  Staff Phone-Num :  " + this.devStaff.getPhoneNum());
 	}
 
-	public LocalDate getDate() {
-		return date;
-	}
+
 
 	
 	

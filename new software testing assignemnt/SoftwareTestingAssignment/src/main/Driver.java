@@ -200,7 +200,7 @@ public class Driver {
 		// ask for date
 		System.out.println("Please enter the date that you want the item to be deliver to you :  ");
 		dil.getDate();
-		dil.checkSameDate(dil.date);
+		//dil.checkSameDate(dil.date);
 
 		// assign the delivery man
 		dil.setDevStaff(userlist.getRandomStaff());
