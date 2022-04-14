@@ -24,7 +24,7 @@ public class Email {
 	
 	public String toString() {
 		String str = "";
-		
+		//returm delivery detail as email detail
 		return str;
 	}
 	
