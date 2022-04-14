@@ -4,18 +4,14 @@ import java.time.format.DateTimeFormatter;
 
 public class DeliveryItemList {
 
-	ArrayList<Item> devItemList = new ArrayList<Item>();
-	DeliveryStaff devStaff;
-	LocalDate date;
-	LocalDate todayDate = LocalDate.now();
-	Client cli;
+	private ArrayList<Item> devItemList = new ArrayList<Item>();
+	private DeliveryStaff devStaff;
+	private LocalDate date;
+	private Client cli;
 
 	boolean sameDate = false;
 	boolean insurance = false;
-	double price;
-	int year;
-	int month;
-	int days;
+
 
 	// empty constructor for easy access // i am sure this practice is wrong but whatever
 	DeliveryItemList() {

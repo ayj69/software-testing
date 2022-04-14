@@ -2,8 +2,8 @@ import java.util.*;
 
 public class ItemList {
 
-	LinkedList<Item> itemList = new LinkedList<Item>();
-	LinkedList<Item> tempList = new LinkedList<Item>();
+	private LinkedList<Item> itemList = new LinkedList<Item>();
+	private LinkedList<Item> tempList = new LinkedList<Item>();
 
 	// print item list based on status //currently unused
 	public void printArrayString2(List<Item> list) {
@@ -26,6 +26,10 @@ public class ItemList {
 		}
 		System.out.println("----------------------------------------------------------------------------------");
 
+	}
+
+	public LinkedList<Item> getItemList() {
+		return itemList;
 	}
 
 }

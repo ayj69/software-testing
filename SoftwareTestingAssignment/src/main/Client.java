@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 public class Client extends User {
 
 	private double distance;
-	private DeliveryItemList dil;
 	String userNameRegex = "^[a-zA-Z0-9._-]{3,}$";
 	String phoneNumRegex = "^(01)[0-9][0-9]{7,8}$";
 	String distanceRegex = "^[0-9]+\\.?[0-9]*$";

@@ -21,7 +21,7 @@ public class Driver {
 		ArrayList<DeliveryStaff> tempStaffList = readStaffFile();
 
 		for (Item i : tempItemList)
-			itemlist.itemList.add(i);
+			itemlist.getItemList().add(i);
 
 		for (Client c : tempClientList)
 			userlist.getClientList().add(c);
@@ -111,7 +111,7 @@ public class Driver {
 		System.out.println("pls select the item you want to deliver");
 
 		// add the delivery item into the delivery list
-		dil.getDevItemList().addAll(dil.getItem(itemlist.itemList));
+		dil.getDevItemList().addAll(dil.getItem(itemlist.getItemList()));
 
 		// if the user did not choose any item end the program
 		if (dil.getDevItemList().isEmpty()) {

@@ -3,7 +3,6 @@ import java.util.*;
 public class Guest extends Client {
 
 	private double distance;
-	private DeliveryItemList dil;
 
 	// constructor
 	Guest(String username, String phoneNum, double distance) {

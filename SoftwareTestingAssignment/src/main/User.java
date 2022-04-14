@@ -23,7 +23,7 @@ public class User {
 		this.username = username;
 	}
 
-	public Object getPassword() {
+	public String getPassword() {
 		// TODO Auto-generated method stub
 		return this.password;
 	}
