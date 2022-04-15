@@ -12,6 +12,8 @@ public abstract class Item {
 	private double weight;
 	private String itemType;
 
+	
+	
 	Item(String name, double weight, String type) {
 		this.name = name;
 		if(weight<0)
