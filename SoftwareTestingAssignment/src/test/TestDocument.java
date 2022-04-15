@@ -1,5 +1,13 @@
 import static org.junit.Assert.assertEquals;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,33 +17,44 @@ import junitparams.Parameters;
 @RunWith(JUnitParamsRunner.class)
 
 public class TestDocument {
+	
+static Scanner inputStream;
+static ArrayList<String[]> linesRead;
+
+@Before
+public void setupData() {
+	linesRead = new ArrayList<String[]>();
+	String fileName = "Data/DocTestData.txt";
+	try {
+		inputStream = new Scanner(new File(fileName));
+	} catch (FileNotFoundException e) {
+		System.out.println("Error opening the file " + fileName);
+		System.exit(0);
+	}
+	while (inputStream.hasNextLine()) {
+		String singleLine = inputStream.nextLine();
+		String[] tokens = singleLine.split(",");
+		linesRead.add(tokens);
+	}
+}
+@After
+public void closeFile() {
+	inputStream.close();
+}
+	
 @Test
-@Parameters(method="testDocumentValidCalChargeParam")
-public void testDocumentCalChargeValid( double weightVal,double distanceVal,double expected) {
-	Document D = new Document("", weightVal);
-	assertEquals(expected, D.calCharge(weightVal, distanceVal),0);
+public void testDocumentCalChargeValid() {
+	for(int i=0;i<linesRead.size();i++) {
+		String[] inputStr = linesRead.get(i);
+		double weightVal=Double.valueOf(inputStr[0]);
+		double distanceVal=Double.valueOf(inputStr[1]);
+		double expected=Double.valueOf(inputStr[2]);
+		Document D = new Document("", weightVal);
+		assertEquals(expected, D.calCharge(weightVal, distanceVal),0);
+	}
 }
 
-private Object[] testDocumentValidCalChargeParam() {
-	return new Object[] {
-		new Object[] {299,10,3},
-		new Object[] {300,9,4},
-		new Object[] {300,10,5},
-		new Object[] {300,31,6},
-		
-		new Object[] {1001,9,6},
-		new Object[] {1001,10,8},
-		new Object[] {1001,31,10},
-		
-		new Object[] {3001,9,12},
-		new Object[] {3001,10,18},
-		new Object[] {3001,31,25},
-		
-		new Object[] {5001,9,25},
-		new Object[] {5001,10,30},
-		new Object[] {5001,31,35},
-	};
-}
+
 
 @Test(expected=IllegalArgumentException.class)
 @Parameters(method="testDocumentInvalidCalChargeParam")

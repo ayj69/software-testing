@@ -1,44 +1,62 @@
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 @RunWith(JUnitParamsRunner.class)
 
 public class TestParcel {
+
+static Scanner inputStream;
+static ArrayList<String[]> linesRead;
+
+@Before
+public void setupData() {
+	linesRead = new ArrayList<String[]>();
+	String fileName = "Data/ParTestData.txt";
+	try {
+		inputStream = new Scanner(new File(fileName));
+	} catch (FileNotFoundException e) {
+		System.out.println("Error opening the file " + fileName);
+		System.exit(0);
+	}
+	while (inputStream.hasNextLine()) {
+		String singleLine = inputStream.nextLine();
+		String[] tokens = singleLine.split(",");
+		linesRead.add(tokens);
+	}
+}
+@After
+public void closeFile() {
+	inputStream.close();
+}
+
 @Test
-@Parameters(method="testParcelValidCalChargeParam")
-public void testParcelCalChargeValid( double weightVal,double distanceVal,double expected) {
+public void testParcelCalChargeValid() {
+	for(int i=0;i<linesRead.size();i++) {
+	String[] inputStr = linesRead.get(i);
+	double weightVal=Double.valueOf(inputStr[0]);
+	double distanceVal=Double.valueOf(inputStr[1]);
+	double expected=Double.valueOf(inputStr[2]);
 	Parcel P = new Parcel("", weightVal);
 	assertEquals(expected, P.calCharge(weightVal, distanceVal),0);
 }
+	}
 
-private Object[] testParcelValidCalChargeParam() {
-	return new Object[] {
-		new Object[] {999,9,5},
-		new Object[] {999,10,8},
-		new Object[] {999,31,10},
-		
-		new Object[] {1001,9,15},
-		new Object[] {1001,10,18},
-		new Object[] {1001,31,25},
-		
-		new Object[] {2001,9,23},
-		new Object[] {2001,10,28},
-		new Object[] {2001,31,35},
-		
-		new Object[] {3001,9,35},
-		new Object[] {3001,10,40},
-		new Object[] {3001,31,50},
-		
-		new Object[] {5001,9,45},
-		new Object[] {5001,10,50},
-		new Object[] {5001,31,60},
-	};
-}
 
 @Test(expected=IllegalArgumentException.class)
 @Parameters(method="testParcelInvalidCalChargeParam")
