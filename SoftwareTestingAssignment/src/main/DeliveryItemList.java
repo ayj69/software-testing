@@ -246,9 +246,9 @@ public class DeliveryItemList {
 	public void printDeliveryString() {
 
 		double basicPrice = 0;
-		double insurancePrice = this.insurance ? 10.0 : 0.0;
+		double insurancePrice = this.insurance ? 15.0 : 0.0;
 		double totalPrice;
-		double samedatePrice = this.sameDate ? 15.0 : 0.0;
+		double samedatePrice = this.sameDate ? 10.0 : 0.0;
 		System.out.print(
 				"\nDelivery Detail\n---------------------------------------------------------------------------------------------------------------------------\n");
 		for (int i = 0; i < this.devItemList.size(); i++) {
